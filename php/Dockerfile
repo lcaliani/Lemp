@@ -6,4 +6,6 @@ RUN docker-php-ext-install bcmath
 RUN apt-get update && apt-get install libonig-dev
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install json
+RUN curl -sS https://getcomposer.org/installer | php  -- --install-dir=/bin && \
+    cp /bin/composer.phar /bin/composer
  
