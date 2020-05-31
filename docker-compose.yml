@@ -1,22 +1,13 @@
 web: 
   container_name: nginx
-  image: "nginx:latest"
+  build: ./web
   ports: 
     - "80:80"
   restart: always
   volumes:
-    - ./www:/www
-    - ./site.conf:/etc/nginx/conf.d/site.conf
+    - ./www:/usr/share/nginx/html
   links:
-    - php
-
-php: 
- container_name: php
- build: ./php
- volumes:
-   - ./www:/www
- links:
-   - db
+    - db
 
 db:
   container_name: mysql
